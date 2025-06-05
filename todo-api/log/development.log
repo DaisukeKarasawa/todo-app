@@ -1,0 +1,1330 @@
+Started GET "/" for ::1 at 2025-06-05 12:33:35 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/daisukekarasawa/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/daisukekarasawa/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 470)
+Completed 200 OK in 34ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 9063)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:33:50 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 54ms (Views: 0.5ms | ActiveRecord: 3.6ms | Allocations: 14705)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:34:04 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"dd", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "dd"], ["is_completed", 0], ["created_at", "2025-06-05 03:34:04.513260"], ["updated_at", "2025-06-05 03:34:04.513260"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 19ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 18874)
+
+
+Started PUT "/api/v1/todos/1" for ::1 at 2025-06-05 12:34:06 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"dd", "completed"=>true}, "id"=>"1"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x00000001193787b8>, params: {"todo"=>{"title"=>"dd", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"1"} }[0m
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1805)
+
+
+Started DELETE "/api/v1/todos/1" for ::1 at 2025-06-05 12:34:10 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.9ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.1ms | Allocations: 1965)
+
+
+Started GET "/" for ::1 at 2025-06-05 12:34:12 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/daisukekarasawa/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/daisukekarasawa/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 15)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 186)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:34:15 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 680)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:36:07 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 30ms (Views: 0.5ms | ActiveRecord: 4.7ms | Allocations: 31133)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:36:11 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hogehoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hogehoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:36:11.653687"], ["updated_at", "2025-06-05 03:36:11.653687"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 22ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 18739)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:36:13 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"fugafuta", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "fugafuta"], ["is_completed", 0], ["created_at", "2025-06-05 03:36:13.990686"], ["updated_at", "2025-06-05 03:36:13.990686"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 1820)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:36:16 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hogefuga", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hogefuga"], ["is_completed", 0], ["created_at", "2025-06-05 03:36:16.650027"], ["updated_at", "2025-06-05 03:36:16.650027"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1820)
+
+
+Started PUT "/api/v1/todos/4" for ::1 at 2025-06-05 12:36:18 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hogefuga", "completed"=>true}, "id"=>"4"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011e823380>, params: {"todo"=>{"title"=>"hogefuga", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"4"} }[0m
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1518)
+
+
+Started PUT "/api/v1/todos/3" for ::1 at 2025-06-05 12:36:19 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"fugafuta", "completed"=>true}, "id"=>"3"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011e82a298>, params: {"todo"=>{"title"=>"fugafuta", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"3"} }[0m
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 813)
+
+
+Started PUT "/api/v1/todos/2" for ::1 at 2025-06-05 12:36:20 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hogehoge", "completed"=>true}, "id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011e831a70>, params: {"todo"=>{"title"=>"hogehoge", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"2"} }[0m
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 811)
+
+
+Started DELETE "/api/v1/todos/4" for ::1 at 2025-06-05 12:36:22 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.9ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.4ms | Allocations: 1960)
+
+
+Started DELETE "/api/v1/todos/2" for ::1 at 2025-06-05 12:36:23 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (1.1ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 1.7ms | Allocations: 1933)
+
+
+Started DELETE "/api/v1/todos/3" for ::1 at 2025-06-05 12:36:24 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (1.3ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.7ms | Allocations: 1932)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:36:26 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:36:26.495836"], ["updated_at", "2025-06-05 03:36:26.495836"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1800)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:36:46 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 745)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:36:46 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 745)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:36:48 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:36:48.867689"], ["updated_at", "2025-06-05 03:36:48.867689"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 7ms (Views: 0.5ms | ActiveRecord: 2.7ms | Allocations: 1799)
+
+
+Started DELETE "/api/v1/todos/6" for ::1 at 2025-06-05 12:36:51 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 9ms (ActiveRecord: 1.0ms | Allocations: 1930)
+
+
+Started DELETE "/api/v1/todos/5" for ::1 at 2025-06-05 12:36:52 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (1.1ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 7ms (ActiveRecord: 1.4ms | Allocations: 1930)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:39:48 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 666)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:39:57 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:39:57.759531"], ["updated_at", "2025-06-05 03:39:57.759531"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 7ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 1799)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:40:01 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"fuga", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "fuga"], ["is_completed", 0], ["created_at", "2025-06-05 03:40:01.622650"], ["updated_at", "2025-06-05 03:40:01.622650"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 1799)
+
+
+Started PUT "/api/v1/todos/8" for ::1 at 2025-06-05 12:40:03 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"fuga", "completed"=>true}, "id"=>"8"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000012807bc40>, params: {"todo"=>{"title"=>"fuga", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"8"} }[0m
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 808)
+
+
+Started DELETE "/api/v1/todos/8" for ::1 at 2025-06-05 12:40:07 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.7ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 1.3ms | Allocations: 1930)
+
+
+Started PUT "/api/v1/todos/7" for ::1 at 2025-06-05 12:40:08 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "completed"=>true}, "id"=>"7"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011e8d1548>, params: {"todo"=>{"title"=>"hoge", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"7"} }[0m
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 808)
+
+
+Started DELETE "/api/v1/todos/7" for ::1 at 2025-06-05 12:40:10 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.9ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.3ms | Allocations: 1930)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:43:43 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 667)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:43:48 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"ほげ", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "ほげ"], ["is_completed", 0], ["created_at", "2025-06-05 03:43:48.493846"], ["updated_at", "2025-06-05 03:43:48.493846"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 1802)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:43:51 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"ふが", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "ふが"], ["is_completed", 0], ["created_at", "2025-06-05 03:43:51.903347"], ["updated_at", "2025-06-05 03:43:51.903347"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 4ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 1801)
+
+
+Started PUT "/api/v1/todos/9" for ::1 at 2025-06-05 12:46:53 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ほげ", "completed"=>true}, "id"=>"9"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011f08fe60>, params: {"todo"=>{"title"=>"ほげ", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"9"} }[0m
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/10" for ::1 at 2025-06-05 12:46:54 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ふが", "completed"=>true}, "id"=>"10"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000012d0f8948>, params: {"todo"=>{"title"=>"ふが", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"10"} }[0m
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/9" for ::1 at 2025-06-05 12:46:57 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ほげ", "completed"=>false}, "id"=>"9"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011f8dc690>, params: {"todo"=>{"title"=>"ほげ", "completed"=>false}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"9"} }[0m
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/10" for ::1 at 2025-06-05 12:46:58 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ふが", "completed"=>false}, "id"=>"10"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011f8fc968>, params: {"todo"=>{"title"=>"ふが", "completed"=>false}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"10"} }[0m
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:35 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.7ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:35.507181"], ["updated_at", "2025-06-05 03:48:35.507181"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 8ms (Views: 0.4ms | ActiveRecord: 2.9ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:36 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"ll", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "ll"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:36.751375"], ["updated_at", "2025-06-05 03:48:36.751375"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:37 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "ljdf"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:37.978866"], ["updated_at", "2025-06-05 03:48:37.978866"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 5ms (Views: 0.4ms | ActiveRecord: 1.7ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:39 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"jalsdHLAsd", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "jalsdHLAsd"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:39.181237"], ["updated_at", "2025-06-05 03:48:39.181237"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:40 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"halsdkjAlskdfj", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "halsdkjAlskdfj"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:40.459922"], ["updated_at", "2025-06-05 03:48:40.459922"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:42 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"jlaksdjAsdf", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "jlaksdjAsdf"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:42.107918"], ["updated_at", "2025-06-05 03:48:42.107918"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 4ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:43 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"asdfhhglgl", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "asdfhhglgl"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:43.575325"], ["updated_at", "2025-06-05 03:48:43.575325"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:48:45 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"asfhhflsdf", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "asfhhflsdf"], ["is_completed", 0], ["created_at", "2025-06-05 03:48:45.087339"], ["updated_at", "2025-06-05 03:48:45.087339"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 1801)
+
+
+Started PUT "/api/v1/todos/18" for ::1 at 2025-06-05 12:48:50 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"asfhhflsdf", "completed"=>true}, "id"=>"18"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011e9c88e8>, params: {"todo"=>{"title"=>"asfhhflsdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"18"} }[0m
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 810)
+
+
+Started DELETE "/api/v1/todos/18" for ::1 at 2025-06-05 12:48:51 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.5ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/todos/17" for ::1 at 2025-06-05 12:48:53 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/todos/16" for ::1 at 2025-06-05 12:48:55 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (1.0ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.3ms | Allocations: 1931)
+
+
+Started DELETE "/api/v1/todos/15" for ::1 at 2025-06-05 12:48:56 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.9ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.1ms | Allocations: 1931)
+
+
+Started PUT "/api/v1/todos/14" for ::1 at 2025-06-05 12:48:57 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"jalsdHLAsd", "completed"=>true}, "id"=>"14"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011ea38ee0>, params: {"todo"=>{"title"=>"jalsdHLAsd", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"14"} }[0m
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:48:59 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011ea51698>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/12" for ::1 at 2025-06-05 12:49:00 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ll", "completed"=>true}, "id"=>"12"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x00000001280e08c0>, params: {"todo"=>{"title"=>"ll", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"12"} }[0m
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started DELETE "/api/v1/todos/14" for ::1 at 2025-06-05 12:49:02 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.7ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.1ms | Allocations: 1931)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:02 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 1019)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:49:04 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011ea71920>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:04 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:05 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:06 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:06 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:06 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:07 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:49:09 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011fa2fe48>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/12" for ::1 at 2025-06-05 12:49:10 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ll", "completed"=>true}, "id"=>"12"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011fa34808>, params: {"todo"=>{"title"=>"ll", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"12"} }[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/11" for ::1 at 2025-06-05 12:49:10 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "completed"=>true}, "id"=>"11"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011eac9530>, params: {"todo"=>{"title"=>"hoge", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"11"} }[0m
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:12 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started PUT "/api/v1/todos/9" for ::1 at 2025-06-05 12:49:31 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ほげ", "completed"=>true}, "id"=>"9"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011fa66998>, params: {"todo"=>{"title"=>"ほげ", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"9"} }[0m
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:31 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:32 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:32 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:48 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:49:56 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:50:06 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:52:40 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:52:42 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011f17f118>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/11" for ::1 at 2025-06-05 12:52:44 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "completed"=>true}, "id"=>"11"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011faa6390>, params: {"todo"=>{"title"=>"hoge", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"11"} }[0m
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 810)
+
+
+Started PUT "/api/v1/todos/10" for ::1 at 2025-06-05 12:52:44 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ふが", "completed"=>true}, "id"=>"10"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000011eb31428>, params: {"todo"=>{"title"=>"ふが", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"10"} }[0m
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 810)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:52:45 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1019)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:53:29 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 37ms (Views: 10.1ms | ActiveRecord: 4.5ms | Allocations: 48209)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:53:31 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000010e00fd70>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1605)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:53:32 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1032)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:53:46 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1032)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:53:55 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1032)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:54:01 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000010d823558>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 813)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:54:02 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1017)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:54:03 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x00000001038bf368>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 817)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:54:03 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1017)
+
+
+Started PUT "/api/v1/todos/13" for ::1 at 2025-06-05 12:54:07 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "id"=>"13"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x000000010d02ddd0>, params: {"todo"=>{"title"=>"ljdf", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"13"} }[0m
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 817)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:54:07 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1017)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:54:33 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1017)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:54:35 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1017)
+
+
+Started DELETE "/api/v1/todos/13" for ::1 at 2025-06-05 12:55:03 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.5ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 37ms (ActiveRecord: 6.9ms | Allocations: 49717)
+
+
+Started DELETE "/api/v1/todos/12" for ::1 at 2025-06-05 12:55:04 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms | Allocations: 1951)
+
+
+Started DELETE "/api/v1/todos/11" for ::1 at 2025-06-05 12:55:06 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.6ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.8ms | Allocations: 1951)
+
+
+Started DELETE "/api/v1/todos/10" for ::1 at 2025-06-05 12:55:07 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.5ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms | Allocations: 1951)
+
+
+Started DELETE "/api/v1/todos/9" for ::1 at 2025-06-05 12:55:08 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.5ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms | Allocations: 1951)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:55:11 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (2.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:55:11.099375"], ["updated_at", "2025-06-05 03:55:11.099375"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 2014)
+
+
+Started PUT "/api/v1/todos/19" for ::1 at 2025-06-05 12:55:13 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "completed"=>true}, "id"=>"19"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+[31mUnpermitted parameter: :completed. Context: { controller: Api::V1::TodosController, action: update, request: #<ActionDispatch::Request:0x00000001490241e0>, params: {"todo"=>{"title"=>"hoge", "completed"=>true}, "controller"=>"api/v1/todos", "action"=>"update", "id"=>"19"} }[0m
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 842)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:55:14 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 796)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:55:52 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 746)
+
+
+Started PUT "/api/v1/todos/19" for ::1 at 2025-06-05 12:56:02 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>true}, "id"=>"19"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTodo Update (0.8ms)[0m  [1m[33mUPDATE "todos" SET "is_completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["is_completed", 1], ["updated_at", "2025-06-05 03:56:02.061549"], ["id", 19]]
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 2378)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:56:03 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 744)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:56:04 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 745)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:56:08 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"fuga", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "fuga"], ["is_completed", 0], ["created_at", "2025-06-05 03:56:08.488382"], ["updated_at", "2025-06-05 03:56:08.488382"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:56:10 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hogefuga", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hogefuga"], ["is_completed", 0], ["created_at", "2025-06-05 03:56:10.640192"], ["updated_at", "2025-06-05 03:56:10.640192"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 4ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:56:13 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"fugafuga", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "fugafuga"], ["is_completed", 0], ["created_at", "2025-06-05 03:56:13.202358"], ["updated_at", "2025-06-05 03:56:13.202358"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 1799)
+
+
+Started PUT "/api/v1/todos/21" for ::1 at 2025-06-05 12:56:15 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hogefuga", "is_completed"=>true}, "id"=>"21"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTodo Update (0.6ms)[0m  [1m[33mUPDATE "todos" SET "is_completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["is_completed", 1], ["updated_at", "2025-06-05 03:56:15.510487"], ["id", 21]]
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2355)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:56:17 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 949)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:57:35 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 36ms (Views: 10.3ms | ActiveRecord: 3.4ms | Allocations: 48141)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:57:46 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 964)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:57:59 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 964)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:58:18 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 964)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:58:19 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 964)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:58:30 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 949)
+
+
+Started DELETE "/api/v1/todos/22" for ::1 at 2025-06-05 12:58:32 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.6ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 12ms (ActiveRecord: 1.4ms | Allocations: 3646)
+
+
+Started DELETE "/api/v1/todos/21" for ::1 at 2025-06-05 12:58:33 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 21]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms | Allocations: 1938)
+
+
+Started DELETE "/api/v1/todos/19" for ::1 at 2025-06-05 12:58:35 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.9ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.2ms | Allocations: 1938)
+
+
+Started DELETE "/api/v1/todos/20" for ::1 at 2025-06-05 12:58:36 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (1.1ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 5ms (ActiveRecord: 1.4ms | Allocations: 1938)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:58:52 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 666)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 12:59:48 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 666)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 12:59:59 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 03:59:59.018596"], ["updated_at", "2025-06-05 03:59:59.018596"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 6ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 1960)
+
+
+Started PUT "/api/v1/todos/23" for ::1 at 2025-06-05 13:00:07 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>true}, "id"=>"23"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTodo Update (1.1ms)[0m  [1m[33mUPDATE "todos" SET "is_completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["is_completed", 1], ["updated_at", "2025-06-05 04:00:07.749735"], ["id", 23]]
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 2389)
+
+
+Started DELETE "/api/v1/todos/23" for ::1 at 2025-06-05 13:00:10 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.6ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 23]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.8ms | Allocations: 1934)
+
+
+Started GET "/api/v1/todos" for ::1 at 2025-06-05 13:02:37 +0900
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 666)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 13:04:30 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (1.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hoge"], ["is_completed", 0], ["created_at", "2025-06-05 04:04:30.159319"], ["updated_at", "2025-06-05 04:04:30.159319"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 7ms (Views: 0.5ms | ActiveRecord: 2.4ms | Allocations: 1799)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 13:04:31 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hogehoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hogehoge"], ["is_completed", 0], ["created_at", "2025-06-05 04:04:31.825147"], ["updated_at", "2025-06-05 04:04:31.825147"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1801)
+
+
+Started POST "/api/v1/todos" for ::1 at 2025-06-05 13:04:33 +0900
+Processing by Api::V1::TodosController#create as HTML
+  Parameters: {"todo"=>{"title"=>"hogehogehoge", "is_completed"=>false}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTodo Create (0.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "is_completed", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "hogehogehoge"], ["is_completed", 0], ["created_at", "2025-06-05 04:04:33.519680"], ["updated_at", "2025-06-05 04:04:33.519680"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:12:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1799)
+
+
+Started DELETE "/api/v1/todos/26" for ::1 at 2025-06-05 13:04:34 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"26"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 26]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.1ms | Allocations: 1930)
+
+
+Started PUT "/api/v1/todos/25" for ::1 at 2025-06-05 13:04:36 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hogehoge", "is_completed"=>true}, "id"=>"25"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTodo Update (0.8ms)[0m  [1m[33mUPDATE "todos" SET "is_completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["is_completed", 1], ["updated_at", "2025-06-05 04:04:36.166421"], ["id", 25]]
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 2359)
+
+
+Started PUT "/api/v1/todos/24" for ::1 at 2025-06-05 13:04:36 +0900
+Processing by Api::V1::TodosController#update as HTML
+  Parameters: {"todo"=>{"title"=>"hoge", "is_completed"=>true}, "id"=>"24"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTodo Update (0.8ms)[0m  [1m[33mUPDATE "todos" SET "is_completed" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["is_completed", 1], ["updated_at", "2025-06-05 04:04:36.871756"], ["id", 24]]
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:20:in `update'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2355)
+
+
+Started DELETE "/api/v1/todos/24" for ::1 at 2025-06-05 13:04:38 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (0.7ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 24]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.9ms | Allocations: 1930)
+
+
+Started DELETE "/api/v1/todos/25" for ::1 at 2025-06-05 13:04:38 +0900
+Processing by Api::V1::TodosController#destroy as HTML
+  Parameters: {"id"=>"25"}
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTodo Destroy (1.0ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = ?[0m  [["id", 25]]
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:28:in `destroy'
+Completed 204 No Content in 4ms (ActiveRecord: 1.3ms | Allocations: 1930)
+
+
