@@ -1,3 +1,25 @@
-/todo-api/storage/*
+# ==============================================================================
+# Rails API Backend (todo-api/)
+# ==============================================================================
+
+# Logs and runtime data
 /todo-api/log/*
 /todo-api/tmp/*
+/todo-api/storage/*
+
+# Database
+/todo-api/db/*.sqlite3
+/todo-api/db/*.sqlite3-journal
+/todo-api/db/*.sqlite3-*
+
+# Environment variables
+/todo-api/.env*
+/todo-api/config/master.key
+/todo-api/config/credentials/*.key
+
+# ==============================================================================
+# Vue.js Frontend (todo-frontend/)
+# ==============================================================================
+
+# Dependencies
+/todo-frontend/node_modules/
